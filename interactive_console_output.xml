@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.10.2 on win32)" generated="20241020 14:20:02.362" rpa="false" schemaversion="4">
+<suite id="s1" name="Robot Interactive Console" source="c:\Users\thitt804\.vscode\extensions\robocorp.robotframework-lsp-1.13.0\src\robotframework_ls\vendored\robotframework_interactive\robot_interactive_console.robot">
+<test id="s1-t1" name="Default Task/Test" line="5">
+<kw name="Interpreter Main Loop" library="MainLoop">
+<kw name="Create Session">
+<arg>mysession</arg>
+<arg>${base_url}</arg>
+<msg timestamp="20241020 14:20:02.836" level="FAIL">No keyword with name 'Create Session' found.</msg>
+<status status="FAIL" starttime="20241020 14:20:02.836" endtime="20241020 14:20:02.836"/>
+</kw>
+<kw name="Get Request">
+<var>${response}</var>
+<arg>mysession</arg>
+<arg>${endpoint_list_users}</arg>
+<status status="NOT RUN" starttime="20241020 14:20:02.837" endtime="20241020 14:20:02.837"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20241020 14:20:02.837" endtime="20241020 14:20:02.837"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20241020 14:20:02.837" endtime="20241020 14:20:02.837"/>
+</kw>
+<kw name="Convert String to JSON">
+<var>${json_response}</var>
+<arg>${response.content}</arg>
+<status status="NOT RUN" starttime="20241020 14:20:02.838" endtime="20241020 14:20:02.838"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${json_response}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20241020 14:20:02.839" endtime="20241020 14:20:02.839"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" starttime="20241020 14:20:02.839" endtime="20241020 14:20:02.839"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${status_code}</arg>
+<arg>200</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" starttime="20241020 14:20:02.839" endtime="20241020 14:20:02.839"/>
+</kw>
+<status status="PASS" starttime="20241020 14:20:02.425" endtime="20241020 14:20:03.586"/>
+</kw>
+<status status="PASS" starttime="20241020 14:20:02.425" endtime="20241020 14:20:03.587"/>
+</test>
+<status status="PASS" starttime="20241020 14:20:02.362" endtime="20241020 14:20:03.588"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Robot Interactive Console">Robot Interactive Console</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

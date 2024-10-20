@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.10.2 on win32)" generated="20241020 16:00:49.342" rpa="false" schemaversion="4">
+<suite id="s1" name="GetRequests" source="c:\Users\thitt804\Desktop\pratice\request liabrary\GetRequests.robot">
+<test id="s1-t1" name="Request Single user" line="47">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mysession</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20241020 16:00:49.812" level="INFO">Creating Session using : alias=mysession, url=https://reqres.in/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20241020 16:00:49.811" endtime="20241020 16:00:49.816"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>mysession</arg>
+<arg>${endpoint_single_user}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20241020 16:00:49.817" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20241020 16:00:50.110" level="INFO">GET Request : url=https://reqres.in/api/users/2 
+ path_url=/api/users/2 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20241020 16:00:50.111" level="INFO">GET Response : url=https://reqres.in/api/users/2 
+ status=200, reason=OK 
+ headers={'Date': 'Sun, 20 Oct 2024 09:00:48 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1729213911&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=gxwKaDmdKFo1D%2Bb6qnbol9m0tOmFkk7PKBbDT96HrYo%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1729213911&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=gxwKaDmdKFo1D%2Bb6qnbol9m0tOmFkk7PKBbDT96HrYo%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"118-pbdwwFo9SKNhD3Lx5iHJyngpq00"', 'Via': '1.1 vegur', 'Cache-Control': 'max-age=14400', 'CF-Cache-Status': 'HIT', 'Age': '1426', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '8d57d1cfff084655-SIN', 'Content-Encoding': 'gzip'} 
+ body={"data":{"id":2,"email":"janet.weaver@reqres.in","first_name":"Janet","last_name":"Weaver","avatar":"https://reqres.in/img/faces/2-image.jpg"},"support":{"url":"https://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}} 
+ </msg>
+<msg timestamp="20241020 16:00:50.112" level="INFO">C:\Python310\lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20241020 16:00:50.113" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20241020 16:00:49.817" endtime="20241020 16:00:50.113"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20241020 16:00:50.115" level="INFO">200</msg>
+<status status="PASS" starttime="20241020 16:00:50.114" endtime="20241020 16:00:50.115"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20241020 16:00:50.117" level="INFO">{"data":{"id":2,"email":"janet.weaver@reqres.in","first_name":"Janet","last_name":"Weaver","avatar":"https://reqres.in/img/faces/2-image.jpg"},"support":{"url":"https://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}</msg>
+<status status="PASS" starttime="20241020 16:00:50.116" endtime="20241020 16:00:50.117"/>
+</kw>
+<kw name="Convert String to JSON" library="JSONLibrary">
+<var>${json_response}</var>
+<arg>${response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<msg timestamp="20241020 16:00:50.118" level="INFO">${json_response} = {'data': {'id': 2, 'email': 'janet.weaver@reqres.in', 'first_name': 'Janet', 'last_name': 'Weaver', 'avatar': 'https://reqres.in/img/faces/2-image.jpg'}, 'support': {'url': 'https://reqres.in/#support...</msg>
+<status status="PASS" starttime="20241020 16:00:50.118" endtime="20241020 16:00:50.118"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${json_response}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20241020 16:00:50.119" endtime="20241020 16:00:50.119"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20241020 16:00:50.121" level="INFO">${status_code} = 200</msg>
+<status status="PASS" starttime="20241020 16:00:50.120" endtime="20241020 16:00:50.121"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${status_code}</arg>
+<arg>200</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20241020 16:00:50.121" endtime="20241020 16:00:50.121"/>
+</kw>
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${contents}</var>
+<arg>${json_response}</arg>
+<arg>${page_single_user}</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20241020 16:00:50.152" level="INFO">${contents} = [2]</msg>
+<status status="PASS" starttime="20241020 16:00:50.122" endtime="20241020 16:00:50.152"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${contents}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20241020 16:00:50.153" endtime="20241020 16:00:50.154"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${contents}</var>
+<arg>${contents}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20241020 16:00:50.155" level="INFO">${contents} = [2]</msg>
+<status status="PASS" starttime="20241020 16:00:50.155" endtime="20241020 16:00:50.155"/>
+</kw>
+<kw name="Remove String Using Regexp" library="String">
+<var>${contents}</var>
+<arg>${contents}</arg>
+<arg>['\\[\\],]</arg>
+<doc>Removes ``patterns`` from the given ``string``.</doc>
+<msg timestamp="20241020 16:00:50.156" level="INFO">${contents} = 2</msg>
+<status status="PASS" starttime="20241020 16:00:50.156" endtime="20241020 16:00:50.157"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${contents}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20241020 16:00:50.157" endtime="20241020 16:00:50.158"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${contents}</arg>
+<arg>2</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20241020 16:00:50.158" endtime="20241020 16:00:50.159"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${headerValue}</var>
+<arg>${response.headers}</arg>
+<arg>Content-Type</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20241020 16:00:50.161" level="INFO">${headerValue} = application/json; charset=utf-8</msg>
+<status status="PASS" starttime="20241020 16:00:50.159" endtime="20241020 16:00:50.162"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${headerValue}</arg>
+<arg>application/json; charset=utf-8</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20241020 16:00:50.163" endtime="20241020 16:00:50.164"/>
+</kw>
+<status status="PASS" starttime="20241020 16:00:49.809" endtime="20241020 16:00:50.164"/>
+</test>
+<doc>Robot framework Demo</doc>
+<status status="PASS" starttime="20241020 16:00:49.405" endtime="20241020 16:00:50.165"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="GetRequests">GetRequests</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20241020 16:00:49.817" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+</errors>
+</robot>
